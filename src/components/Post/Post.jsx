@@ -2,19 +2,21 @@ import { Link } from 'react-router-dom'
 import './Post.css'
 
 export default function Post({ post }) {
+	const PF = 'http://localhost:5678/images/'
+
 	return (
 		<div className='post'>
-			{post.photo && <img src={post.photo} alt={post.title} />}
+			{post.photo && <img src={`${PF}${post.photo}`} alt={post.title} />}
 			<div className='postInfo'>
-				<div className='postCats'>
+				<div className='postCat'>
 					{post.categories.map((category, i) => {
 						return (
 							<span className='postCat' key={i}>
 								<Link
 									className='link'
-									to={`/posts?cat=${category.name}`}
+									to={`/posts?cat=${category}`}
 								>
-									category.name
+									{category}
 								</Link>
 							</span>
 						)
